@@ -438,15 +438,16 @@ def _build_graph_by_relationship_types(graph,
 
 def _node_instance_id(node_id, ctx):
     generated_id = _generate_id()
-    new_node_instance_id = '{0}_{1}'.format(node_id, generated_id)
+    new_node_instance_id = '{0}{1}'.format(node_id, generated_id)
     while new_node_instance_id in ctx.node_instance_ids:
         generated_id = _generate_id()
-        new_node_instance_id = '{0}_{1}'.format(node_id, generated_id)
+        new_node_instance_id = '{0}{1}'.format(node_id, generated_id)
+    ctx.node_instance_ids.add(new_node_instance_id)
     return new_node_instance_id
 
 
 def _generate_id():
-    return '%05x' % random.randrange(16 ** 5)
+    return '%d' % random.randrange(20000)
 
 
 def _node_instance_copy(node, node_instance_id):
