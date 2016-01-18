@@ -256,6 +256,8 @@ class GetAttribute(Function):
         return self.raw
 
     def evaluate_runtime(self, storage):
+        if self.node_name == SELF and self.attribute_path == ['id']:
+            return self.context.get('self')
         if self.node_name == SELF:
             node_instance_id = self.context.get('self')
             self._validate_ref(node_instance_id, SELF)
