@@ -492,7 +492,7 @@ def _process_nodes_plugins(processed_nodes,
         node[constants.DEPLOYMENT_PLUGINS_TO_INSTALL] = \
             deployment_plugins_to_install.values()
 
-    _validate_agent_plugins_on_host_nodes(processed_nodes)
+    #_validate_agent_plugins_on_host_nodes(processed_nodes)
 
 
 def _get_plugins_from_operations(operations_lists,
